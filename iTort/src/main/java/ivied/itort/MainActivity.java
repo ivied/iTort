@@ -1,5 +1,7 @@
 package ivied.itort;
 
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -11,7 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
 
-public class MainActivity extends ActionBarActivity {
+import roboguice.activity.RoboFragmentActivity;
+import roboguice.inject.InjectFragment;
+
+public class MainActivity extends RoboFragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +24,9 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         if (savedInstanceState == null) {
+
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
+                    .add(R.id.container, new FragmentLogin())
                     .commit();
         }
     }
